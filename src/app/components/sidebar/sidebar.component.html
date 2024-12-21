@@ -1,0 +1,60 @@
+<div class="drawer w-full h-full">
+  <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col">
+    <!-- Navbar -->
+    <div class="navbar bg-white border-b border-[calc(.5px)] border-gray-300 w-full">
+      <div class="flex-none">
+        <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block h-6 w-6 stroke-current">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </label>
+      </div>
+      <div class="mx-2 flex-1 px-2 flex justify-between">
+        <div class="flex items-center">
+          <img class="w-16" src="/img.png">Acampa Aí
+        </div>
+        <div>
+          <button (click)="logout()" class="flex justify-center items-center p-2 rounded-xl hover:bg-neutral-300 opacity-50">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00000">
+              <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-content>
+
+    </ng-content>
+  </div>
+  <div class="drawer-side h-full">
+    <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul class="menu bg-base-200 min-h-full gap-10 flex flex-col w-80 p-4">
+      <img class="w-20" src="/img.png">
+      <div class="w-full h-full flex flex-col ">
+      <div class="flex flex-col gap-4 h-full">
+        <label>Gerenciamento</label>
+        <div class="w-full text-black border-b-[calc(.5px)] border-gray-400"></div>
+        <div class="w-full">
+          <li (click)="navigateToCampists()">
+            <a class="opacity-70"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00000"><path d="M80-80v-186l350-472-70-94 64-48 56 75 56-75 64 48-70 94 350 472v186H80Zm400-591L160-240v80h120l200-280 200 280h120v-80L480-671ZM378-160h204L480-302 378-160Zm102-280 200 280-200-280-200 280 200-280Z"/></svg>Acampantes</a></li>
+          <li (click)="navigateToEvents()">
+            <a class="opacity-70"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00000"><path d="M580-240q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>Eventos</a></li>
+        </div>
+
+      </div>
+      </div>
+
+    </ul>
+  </div>
+</div>
+
+

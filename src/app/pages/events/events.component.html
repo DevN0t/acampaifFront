@@ -1,0 +1,91 @@
+<app-sidebar>
+
+  <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box flex flex-col gap-4">
+      <h3 class="text-lg font-bold">Novo Evento</h3>
+      <form [formGroup]="eventForm" class="w-full flex flex-col gap-4">
+        <label class="input input-bordered flex items-center gap-2">
+          <svg class="opacity-70 h-5 w-5" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00000"><path d="M580-240q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>
+          <input formControlName="name" type="text" class="grow" placeholder="Nome" />
+        </label>
+        <label class="input input-bordered flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class=" h-5 w-5 opacity-70" fill="#00000"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
+          <input mask="00/00/0000"  formControlName="date" type="text" class="grow" placeholder="Data" />
+        </label>
+        <div class="modal-action">
+          <form method="dialog" class="w-full flex">
+            <div class="w-full gap-4 flex justify-end">
+              <button class="btn px-10">Close</button>
+              <button (click)="submit()" class="btn btn-primary px-10">Save</button>
+            </div>
+          </form>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+
+  <div class="w-full h-full flex flex-col gap-5 mt-6 items-center">
+    <div class="w-3/4 flex flex-col gap-1">
+      <h1 class="text-2xl wf">Eventos</h1>
+      <h1 class="text-md text-gray-400">Gerenciamento de Eventos</h1>
+
+    </div>
+    <div class="w-3/4 flex justify-end gap-2 max-md:flex-col">
+      <label class="input input-bordered flex items-center gap-2">
+        <input  #searchInput type="text" class="grow" placeholder="Search" [(ngModel)]="searchTerm" (input)="filterEvents()"  />
+        <kbd class="kbd kbd-sm">Ctrl</kbd>
+        <kbd class="kbd kbd-sm">K</kbd>
+      </label>
+      <button onclick="my_modal_5.showModal()" class="btn btn-primary px-10">Novo</button>
+
+    </div>
+    <div class="overflow-x-auto w-3/4 flex flex-col gap-4">
+      <table class="table w-full">
+        <thead>
+        <tr class="">
+          <th></th>
+          <th class="font-bold text-xl">Nome</th>
+          <th class="font-bold text-xl">Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- row 1 -->
+        <tr *ngFor="let campist of filteredEvents" class="hover">
+          <th>{{campist.id}}</th>
+          <td>{{campist.name}}</td>
+          <td >{{campist.date | formatDate}}</td>
+        </tr>
+
+
+        </tbody>
+      </table>
+      <div class="join w-full justify-end">
+        <button
+          class="join-item btn"
+          [class.btn-disabled]="currentPage === 1"
+          (click)="setPage(currentPage - 1)"
+          [disabled]="currentPage === 1">
+          &laquo;
+        </button>
+
+        <button
+          *ngFor="let page of [].constructor(totalPages); let i = index"
+          class="join-item btn btn-ghost"
+          [class.btn-active]="i + 1 === currentPage"
+          (click)="setPage(i + 1)">
+          {{ i + 1 }}
+        </button>
+
+
+        <button
+          class="join-item btn"
+          [class.btn-disabled]="currentPage === totalPages"
+          (click)="setPage(currentPage + 1)"
+          [disabled]="currentPage === totalPages">
+          &raquo;
+        </button>
+      </div>
+    </div>
+  </div>
+</app-sidebar>

@@ -1,0 +1,131 @@
+<app-sidebar>
+  <div class="w-full h-full flex flex-col gap-5 mt-6 items-center">
+    <div class="w-3/4 flex flex-col gap-1">
+      <h1 class="text-2xl wf">Acampantes</h1>
+      <h1 class="text-md text-gray-400">Gerenciamento de Acampantes</h1>
+
+    </div>
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box flex flex-col gap-4">
+        <h3 class="text-lg font-bold">Novo Acampante</h3>
+        <form [formGroup]="campistForm" class="w-full flex flex-col gap-4">
+          <label class="input input-bordered flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor" class="h-5 w-5 opacity-70">
+              <path d="M360-390q-21 0-35.5-14.5T310-440q0-21 14.5-35.5T360-490q21 0 35.5 14.5T410-440q0 21-14.5 35.5T360-390Zm240 0q-21 0-35.5-14.5T550-440q0-21 14.5-35.5T600-490q21 0 35.5 14.5T650-440q0 21-14.5 35.5T600-390ZM480-160q134 0 227-93t93-227q0-24-3-46.5T786-570q-21 5-42 7.5t-44 2.5q-91 0-172-39T390-708q-32 78-91.5 135.5T160-486v6q0 134 93 227t227 93Zm0 80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-54-715q42 70 114 112.5T700-640q14 0 27-1.5t27-3.5q-42-70-114-112.5T480-800q-14 0-27 1.5t-27 3.5ZM177-581q51-29 89-75t57-103q-51 29-89 75t-57 103Zm249-214Zm-103 36Z"/></svg>
+            <input formControlName="name" type="text" class="grow" placeholder="Nome" />
+          </label>
+          <label class="input input-bordered flex items-center gap-2">
+
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" class="h-5 w-5 opacity-70" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M80-80v-320l160-71v-129l200-100v-60h-80v-80h80v-80h80v80h80v80h-80v60l200 100v129l160 71v320H520v-160q0-17-11.5-28.5T480-280q-17 0-28.5 11.5T440-240v160H80Zm80-80h200v-82q0-51 35-86.5t85-35.5q50 0 85 35.5t35 86.5v82h200v-192l-160-72v-134l-160-82-160 82v134l-160 72v192Zm320-260q25 0 42.5-17.5T540-480q0-25-17.5-42.5T480-540q-25 0-42.5 17.5T420-480q0 25 17.5 42.5T480-420Zm0 20Z"/></svg>
+            <input formControlName="church" type="text" class="grow" placeholder="Igreja" />
+          </label>
+          <label class="input input-bordered flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="h-4 w-4 opacity-70">
+              <path
+                d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+              <path
+                d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+            </svg>
+            <input formControlName="email" type="text" class="grow" placeholder="Email" />
+          </label>
+          <label class="input input-bordered flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class=" h-5 w-5 opacity-70" fill="#00000"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
+            <input mask="00/00/0000"  formControlName="birthDate" type="text" class="grow" placeholder="Data de Nascimento" />
+          </label>
+          <label class="input input-bordered flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class="h-5 w-5 opacity-70" fill="currentColor"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>
+            <input formControlName="phone" type="text" class="grow" placeholder="Telefone" />
+          </label>
+          <label class="input input-bordered flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" class="h-5 w-5 opacity-70" fill="currentColor"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>
+            <input formControlName="phoneEmergency" type="text" class="grow" placeholder="Telefone de Emergência" />
+          </label>
+
+          <div class="modal-action">
+            <form method="dialog" class="w-full flex">
+              <div class="w-full flex  items-center gap-2">
+                <button (click)="navigateToQrCode()" class=" btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="opacity-70" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00000"><path d="M520-120v-80h80v80h-80Zm-80-80v-200h80v200h-80Zm320-120v-160h80v160h-80Zm-80-160v-80h80v80h-80Zm-480 80v-80h80v80h-80Zm-80-80v-80h80v80h-80Zm360-280v-80h80v80h-80ZM180-660h120v-120H180v120Zm-60 60v-240h240v240H120Zm60 420h120v-120H180v120Zm-60 60v-240h240v240H120Zm540-540h120v-120H660v120Zm-60 60v-240h240v240H600Zm80 480v-120h-80v-80h160v120h80v80H680ZM520-400v-80h160v80H520Zm-160 0v-80h-80v-80h240v80h-80v80h-80Zm40-200v-160h80v80h80v80H400Zm-190-90v-60h60v60h-60Zm0 480v-60h60v60h-60Zm480-480v-60h60v60h-60Z"/></svg>
+                </button>
+                <label class="opacity-70">Gerar QRCode</label>
+              </div>
+              <div class="w-full gap-4 flex justify-end">
+                <button class="btn px-10">Close</button>
+                <button (click)="submit()" class="btn btn-primary px-10">Save</button>
+              </div>
+
+            </form>
+          </div>
+        </form>
+
+      </div>
+    </dialog>
+    <div class="w-3/4 flex justify-end gap-2 max-md:flex-col">
+      <label class="input input-bordered flex items-center gap-2">
+        <input  #searchInput type="text" class="grow" placeholder="Search" [(ngModel)]="searchTerm" (input)="filterCampists()"  />
+        <kbd class="kbd kbd-sm">Ctrl</kbd>
+        <kbd class="kbd kbd-sm">K</kbd>
+      </label>
+      <select [(ngModel)]="selectedEventId" (change)="onEventSelected($event)" class="select select-bordered max-md:w-full w-1/5">
+        <option disabled selected>Evento</option>
+        <option *ngFor="let event of events" [value]="event.id">{{ event.name }}</option>
+      </select>
+      <button onclick="my_modal_5.showModal()" class="btn btn-primary px-10">Novo</button>
+
+    </div>
+    <div class="overflow-x-auto w-3/4 flex flex-col gap-4">
+      <table class="table w-full">
+        <!-- head -->
+        <thead>
+        <tr class="">
+          <th></th>
+          <th class="font-bold text-xl">Nome</th>
+          <th class="font-bold text-xl">Igreja</th>
+          <th class="font-bold text-xl">Data de Nascimento</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- row 1 -->
+        <tr *ngFor="let campist of filteredCampists" class="hover">
+          <th>{{campist.id}}</th>
+          <td>{{campist.name}}</td>
+          <td>{{campist.church}}</td>
+          <td>{{ campist.birthDate | formatDate }}</td>
+        </tr>
+
+
+        </tbody>
+      </table>
+      <div class="join w-full justify-end">
+        <button
+          class="join-item btn"
+          [class.btn-disabled]="currentPage === 1"
+          (click)="setPage(currentPage - 1)"
+          [disabled]="currentPage === 1">
+          &laquo;
+        </button>
+
+        <button
+          *ngFor="let page of [].constructor(totalPages); let i = index"
+          class="join-item btn btn-ghost"
+          [class.btn-active]="i + 1 === currentPage"
+          (click)="setPage(i + 1)">
+          {{ i + 1 }}
+        </button>
+
+
+        <button
+          class="join-item btn"
+          [class.btn-disabled]="currentPage === totalPages"
+          (click)="setPage(currentPage + 1)"
+          [disabled]="currentPage === totalPages">
+          &raquo;
+        </button>
+      </div>
+    </div>
+  </div>
+</app-sidebar>
