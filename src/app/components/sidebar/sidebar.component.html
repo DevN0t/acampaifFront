@@ -1,8 +1,8 @@
-<div class="drawer w-full h-full">
+<div class="drawer w-full h-full py-2">
   <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
     <!-- Navbar -->
-    <div class="navbar bg-white border-b border-[calc(.5px)] border-gray-300 w-full">
+    <div class="navbar w-full text-white">
       <div class="flex-none">
         <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
           <svg
@@ -19,12 +19,12 @@
         </label>
       </div>
       <div class="mx-2 flex-1 px-2 flex justify-between">
-        <div class="flex items-center">
-          <img class="w-16" src="/img.png">Acampa Aí
+        <div class="flex w-12 h-12 justify-center bg-white rounded-[calc(50%)] items-center">
+          <img class="" src="/img.png">
         </div>
         <div>
-          <button (click)="logout()" class="flex justify-center items-center p-2 rounded-xl hover:bg-neutral-300 opacity-50">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00000">
+          <button (click)="logout()" class="flex justify-center items-center p-2 rounded-xl hover:bg-neutral-300 hover:bg-blue-700">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
               <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/>
             </svg>
           </button>

@@ -34,7 +34,7 @@ export class EventsComponent implements OnInit{
   searchTerm: string = '';  // ID do evento selecionado
   eventForm: FormGroup;
 
-  itemsPerPage: number = 10; // Quantos itens por página
+  itemsPerPage: number = 7; // Quantos itens por página
   currentPage: number = 1; // Página atual
   totalPages: number = 1;
 
@@ -47,6 +47,37 @@ export class EventsComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadEvents();
+  }
+
+  getDisplayedPages(): number[] {
+    const pages: number[] = [];
+
+    // Sempre exibir no máximo 5 botões de páginas
+    const maxVisiblePages = 3;
+
+    // Cálculo do range de páginas
+    const halfRange = Math.floor(maxVisiblePages / 2);
+    let start = Math.max(1, this.currentPage - halfRange);
+    let end = Math.min(this.totalPages, this.currentPage + halfRange);
+
+    // Ajustar o range se estiver próximo ao início ou final
+    if (this.currentPage <= halfRange) {
+      end = Math.min(this.totalPages, maxVisiblePages);
+    } else if (this.currentPage + halfRange >= this.totalPages) {
+      start = Math.max(1, this.totalPages - maxVisiblePages + 1);
+    }
+
+    // Adicionar as páginas ao array
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    return pages;
+  }
+
+
+  trackByPage(index: number, page: number): number {
+    return page;
   }
 
   @HostListener('window:keydown', ['$event'])

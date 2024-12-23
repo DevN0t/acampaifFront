@@ -12,16 +12,12 @@ export class LoginService {
   constructor(private httpClient: HttpClient, private router: Router) { }
 
 
-  private url: string = "http://localhost:8080/";
+  private url: string = "https://acampaiapi.squareweb.app/";
   token? = localStorage.getItem('auth-token');
   login(login: string, password: string) {
-
-
     return this.httpClient.post<LoginResponse>(this.url + "login", {login, password}).pipe(
       tap(value => {
         localStorage.setItem("auth-token", value.token);
-
-        console.log(value.token)
         this.router.navigate([""]);
         this.branchId().subscribe();
       })

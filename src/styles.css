@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  height: 100vh; /* Preenche toda a altura da viewport */
+  background: linear-gradient(to bottom, #0a2775 50%, white 20%);
+}
+.toast-container .ngx-toastr {
+  position: absolute;
+  bottom: 3%;
+  right: 10px;
+  overflow: hidden;
+  padding: 15px 15px 15px 15px;
+  font-size: large;
+  text-align: center;
+  width: 400px;
+  border-radius: 4px !important;
+  background-position: 15px center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  color: #fff;
+  border-image-source: linear-gradient(red, purple) !important;
+  border-image-slice: 20 !important;
+}
+
+.toast-success {
+  background-color: #349d34;
+}

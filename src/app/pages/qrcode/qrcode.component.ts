@@ -5,7 +5,6 @@ import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-qrcode',
-  imports: [],
   templateUrl: './qrcode.component.html',
   standalone: true,
   styleUrl: './qrcode.component.css'
@@ -15,6 +14,7 @@ export class QrcodeComponent implements OnInit{
 
   private code = '';
   copiado: boolean = false;
+  isLoading = true;
 
 
   constructor(private campistsService: CampistsService, private route: ActivatedRoute) {
@@ -37,8 +37,8 @@ export class QrcodeComponent implements OnInit{
       if (this.selectedEventId != null) {
         this.campistsService.campistsQr(this.selectedEventId).subscribe((data) => {
           this.code = data.code;
-
-          QRCode.toCanvas(canvas, "localhost:4200/campistas/cadastro/"+this.code, {
+          this.isLoading = false;
+          QRCode.toCanvas(canvas, "https://acampaiweb.squareweb.app/campistas/cadastro/"+this.code, {
             width: 400,
             margin: 0
           }, (error) => {
@@ -54,7 +54,7 @@ export class QrcodeComponent implements OnInit{
 
   copiarTexto(): void {
     // Copiar o texto usando a Clipboard API moderna
-    navigator.clipboard.writeText("localhost:4200/campistas/cadastro/"+this.code)
+    navigator.clipboard.writeText("https://acampaiweb.squareweb.app/campistas/cadastro/"+this.code)
       .then(() => {
         // Se a cópia for bem-sucedida
         this.copiado = true;

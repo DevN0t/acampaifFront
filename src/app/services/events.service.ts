@@ -12,7 +12,7 @@ export class EventsService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  private url: string = "http://localhost:8080/";
+  private url: string = "https://acampaiapi.squareweb.app/";
   branchId? = localStorage.getItem('branchId');
 
   token? = localStorage.getItem('auth-token');

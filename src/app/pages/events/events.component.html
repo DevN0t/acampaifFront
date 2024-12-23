@@ -16,7 +16,7 @@
           <form method="dialog" class="w-full flex">
             <div class="w-full gap-4 flex justify-end">
               <button class="btn px-10">Close</button>
-              <button (click)="submit()" class="btn btn-primary px-10">Save</button>
+              <button (click)="submit()" class="btn bg-blue-900 text-white px-10">Save</button>
             </div>
           </form>
         </div>
@@ -25,42 +25,52 @@
   </dialog>
 
 
+
+
   <div class="w-full h-full flex flex-col gap-5 mt-6 items-center">
     <div class="w-3/4 flex flex-col gap-1">
-      <h1 class="text-2xl wf">Eventos</h1>
-      <h1 class="text-md text-gray-400">Gerenciamento de Eventos</h1>
+      <h1 class="text-4xl text-white wf">Eventos</h1>
+      <h1 class="text-md text-gray-300">Gerenciamento de Eventos</h1>
 
     </div>
-    <div class="w-3/4 flex justify-end gap-2 max-md:flex-col">
+    <div class="w-3/4 h-[calc(80%)]  max-md:w-full max-md:h-[calc(90%)] flex-col flex p-5 gap-5 rounded-md bg-white border-2">
+
+    <div class="w-full flex justify-end gap-2 max-md:flex-col">
       <label class="input input-bordered flex items-center gap-2">
         <input  #searchInput type="text" class="grow" placeholder="Search" [(ngModel)]="searchTerm" (input)="filterEvents()"  />
-        <kbd class="kbd kbd-sm">Ctrl</kbd>
-        <kbd class="kbd kbd-sm">K</kbd>
+        <kbd class="kbd kbd-sm max-md:invisible">Ctrl</kbd>
+        <kbd class="kbd kbd-sm max-md:invisible">K</kbd>
       </label>
-      <button onclick="my_modal_5.showModal()" class="btn btn-primary px-10">Novo</button>
-
+      <button onclick="my_modal_5.showModal()" class="btn bg-blue-900 text-white px-10">Novo</button>
     </div>
-    <div class="overflow-x-auto w-3/4 flex flex-col gap-4">
+    <div class="overflow-x-auto border-[calc(.5px)] rounded-xl justify-between max-md:p-0 p-10 w-full flex flex-col h-full gap-4">
       <table class="table w-full">
         <thead>
         <tr class="">
           <th></th>
-          <th class="font-bold text-xl">Nome</th>
-          <th class="font-bold text-xl">Data</th>
+
+          <th class="font-bold">Nome</th>
+
+          <th class="font-bold">Data</th>
         </tr>
         </thead>
         <tbody>
         <!-- row 1 -->
         <tr *ngFor="let campist of filteredEvents" class="hover">
           <th>{{campist.id}}</th>
+
           <td>{{campist.name}}</td>
+
           <td >{{campist.date | formatDate}}</td>
         </tr>
 
 
         </tbody>
       </table>
-      <div class="join w-full justify-end">
+
+    </div>
+      <div class="join w-full max-md:justify-center justify-end">
+        <!-- Botão de navegação anterior -->
         <button
           class="join-item btn"
           [class.btn-disabled]="currentPage === 1"
@@ -69,15 +79,16 @@
           &laquo;
         </button>
 
+        <!-- Botões da página -->
         <button
-          *ngFor="let page of [].constructor(totalPages); let i = index"
+          *ngFor="let page of getDisplayedPages(); trackBy: trackByPage"
           class="join-item btn btn-ghost"
-          [class.btn-active]="i + 1 === currentPage"
-          (click)="setPage(i + 1)">
-          {{ i + 1 }}
+          [class.btn-active]="page === currentPage"
+          (click)="setPage(page)">
+          {{ page }}
         </button>
 
-
+        <!-- Botão de navegação próximo -->
         <button
           class="join-item btn"
           [class.btn-disabled]="currentPage === totalPages"
