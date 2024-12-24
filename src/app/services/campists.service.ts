@@ -14,8 +14,8 @@ export class CampistsService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  // private url: string = "https://acampaiapi.squareweb.app/";
-  private url: string = "http://localhost:8080/";
+  private url: string = "https://acampaiapi.squareweb.app/";
+  // private url: string = "http://localhost:8080/";
 
   token? = localStorage.getItem('auth-token');
 
